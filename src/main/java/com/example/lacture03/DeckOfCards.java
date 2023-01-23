@@ -1,6 +1,7 @@
 package com.example.lacture03;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DeckOfCards {
@@ -19,5 +20,24 @@ public class DeckOfCards {
                 deck.add(new Card(faceName, suit));
             }
         }
+    }
+
+    /**
+     * This method will deal the card from the top of the deck
+     */
+    public Card dealTopCard()
+    {
+        if(deck.size() > 0){
+            return deck.remove(0);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * This will shuffle the Deck
+     */
+    public void shuffle(){
+        Collections.shuffle(deck);
     }
 }

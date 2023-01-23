@@ -23,7 +23,7 @@
                         <Image url="@images/king_of_clubs2.png" />
                      </image>
                   </ImageView>
-                  <GridPane alignment="CENTER" hgap="20.0" maxHeight="200.0">
+                  <GridPane alignment="CENTER" hgap="20.0" maxHeight="200.0" maxWidth="400.0" prefHeight="200.0" prefWidth="401.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,27 +36,27 @@
                      <children>
                         <Label text="Face Name:">
                            <font>
-                              <Font name="System Bold Italic" size="18.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font></Label>
                         <Label fx:id="faceNameLabel" text="Label" GridPane.columnIndex="1">
                            <font>
-                              <Font name="System Bold Italic" size="18.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font></Label>
                         <Label text="Suit:" GridPane.rowIndex="1">
                            <font>
-                              <Font name="System Bold Italic" size="18.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font></Label>
                         <Label fx:id="suitNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="System Bold Italic" size="18.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font></Label>
                         <Label text="Value:" GridPane.rowIndex="2">
                            <font>
-                              <Font name="System Bold Italic" size="18.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font></Label>
                         <Label fx:id="valueLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
-                              <Font name="System Bold Italic" size="18.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font></Label>
                      </children>
                   </GridPane>
