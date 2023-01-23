@@ -16,7 +16,7 @@
                         <Image url="@images/king_of_clubs2.png" />
                      </image>
                   </ImageView>
-                  <GridPane hgap="10.0">
+                  <GridPane alignment="CENTER" hgap="10.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,7 +27,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Face Name">
+                        <Label text="Face Name:">
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
                            </font></Label>
@@ -35,7 +35,7 @@
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
                            </font></Label>
-                        <Label text="Suit" GridPane.rowIndex="1">
+                        <Label text="Suit:" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
                            </font></Label>
@@ -43,7 +43,7 @@
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
                            </font></Label>
-                        <Label text="Value" GridPane.rowIndex="2">
+                        <Label text="Value:" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
                            </font></Label>
