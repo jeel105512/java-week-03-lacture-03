@@ -1,5 +1,7 @@
 package com.example.lacture03;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -108,11 +110,14 @@ public class Card {
     }
 
     /**
-     * This method returns the Image location
+     * This method returns the Image object representing the Card visually
+     * It will load the card image based on the filename structure:
+     * faceName_of_suit.png
      */
-    public String getImage()
+    public Image getImage()
     {
-        return null;
+        String fileName = "images/" + faceName + "_of_" + suit + ".png";
+        return new Image(Card.class.getResourceAsStream(fileName));
     }
 
     /**
