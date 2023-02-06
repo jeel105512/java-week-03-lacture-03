@@ -9,6 +9,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class GuesingCardGameController {
@@ -52,6 +55,8 @@ public class GuesingCardGameController {
     @FXML
     private HBox row2HBox;
 
+    private ArrayList<Card> cardsDealt;
+
     @FXML
     void playAgain(ActionEvent event) {
 
@@ -66,11 +71,37 @@ public class GuesingCardGameController {
         cardImage3.setImage(backOfCard);
 
         //We can also achieve this by looping over all the "Node's" in HBox container
+        //add a "listener to each ImageView so that we display the card selected
         for(Node node : row2HBox.getChildren()){
             //Cast the Node to be ImageView object. This is sort of like saying
             //It's a car versus it's a BMW
             ImageView imageView = (ImageView) node;
             imageView.setImage(backOfCard);
+
+            //the -> {} is a "lambda expression", not required for this course, but can make things easier
+            imageView.setOnMouseClicked(event -> {
+                String id = imageView.getId();
+                id = id.replaceAll("[a-zA-Z]*", "");
+                System.out.println(id);
+                //convert the String into a number
+                int index = Integer.parseInt(id);
+                System.out.println(cardsDealt.get(index));
+                imageView.setImage(cardsDealt.get(index).getImage());
+            });
         }
+
+        DeckOfCards deck = new DeckOfCards();
+        deck.shuffle();
+        cardsDealt = new ArrayList<>();
+
+        //deal 4 cards and duplicate each one
+        for(int i = 1; i <= 4; i++){
+            Card card = deck.dealTopCard();
+            cardsDealt.add(card);
+            cardsDealt.add(card);
+        }
+
+        Collections.shuffle(cardsDealt);
+
     }
 }
