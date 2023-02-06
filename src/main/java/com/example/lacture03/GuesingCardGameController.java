@@ -2,6 +2,7 @@ package com.example.lacture03;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
-public class GuesingCardGameController {
+public class GuesingCardGameController implements Initializable {
 
     @FXML
     private ImageView cardImage0;
