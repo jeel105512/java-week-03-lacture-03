@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -18,28 +19,7 @@ import java.util.ResourceBundle;
 public class GuesingCardGameController implements Initializable {
 
     @FXML
-    private ImageView cardImage0;
-
-    @FXML
-    private ImageView cardImage1;
-
-    @FXML
-    private ImageView cardImage2;
-
-    @FXML
-    private ImageView cardImage3;
-
-    @FXML
-    private ImageView cardImage4;
-
-    @FXML
-    private ImageView cardImage5;
-
-    @FXML
-    private ImageView cardImage6;
-
-    @FXML
-    private ImageView cardImage7;
+    private FlowPane flowPane;
 
     @FXML
     private Label correctLabel;
@@ -50,12 +30,6 @@ public class GuesingCardGameController implements Initializable {
     @FXML
     private Label percentCorrectLabel;
 
-    @FXML
-    private HBox row1HBox;
-
-    @FXML
-    private HBox row2HBox;
-
     private ArrayList<Card> cardsDealt;
 
     @FXML
@@ -64,29 +38,41 @@ public class GuesingCardGameController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resourceBundle){
-        //This is the "long" way that calls each ImageView object directory
-        Image backOfCard = new Image(Card.class.getResourceAsStream("images/back_of_card.png"));
-        cardImage0.setImage(backOfCard);
-        cardImage1.setImage(backOfCard);
-        cardImage2.setImage(backOfCard);
-        cardImage3.setImage(backOfCard);
+//        //This is the "long" way that calls each ImageView object directory
+//        Image backOfCard = new Image(Card.class.getResourceAsStream("images/back_of_card.png"));
+//        cardImage0.setImage(backOfCard);
+//        cardImage1.setImage(backOfCard);
+//        cardImage2.setImage(backOfCard);
+//        cardImage3.setImage(backOfCard);
+//
+//        //We can also achieve this by looping over all the "Node's" in HBox container
+//        //add a "listener to each ImageView so that we display the card selected
+//        for(Node node : row2HBox.getChildren()){
+//            //Cast the Node to be ImageView object. This is sort of like saying
+//            //It's a car versus it's a BMW
+//            ImageView imageView = (ImageView) node;
+//            imageView.setImage(backOfCard);
+//
+//            //the -> {} is a "lambda expression", not required for this course, but can make things easier
+//            imageView.setOnMouseClicked(event -> {
+//                String id = imageView.getId();
+//                id = id.replaceAll("[a-zA-Z]*", "");
+//                System.out.println(id);
+//                //convert the String into a number
+//                int index = Integer.parseInt(id);
+//                System.out.println(cardsDealt.get(index));
+//                imageView.setImage(cardsDealt.get(index).getImage());
+//            });
 
-        //We can also achieve this by looping over all the "Node's" in HBox container
-        //add a "listener to each ImageView so that we display the card selected
-        for(Node node : row2HBox.getChildren()){
-            //Cast the Node to be ImageView object. This is sort of like saying
-            //It's a car versus it's a BMW
+        Image backOfCard = new Image(Card.class.getResourceAsStream("images/back_of_card.png"));
+        for(int i = 0; i < flowPane.getChildren().size(); i++){
+            Node node = flowPane.getChildren().get(i);
             ImageView imageView = (ImageView) node;
             imageView.setImage(backOfCard);
+            imageView.setUserData(i);
 
-            //the -> {} is a "lambda expression", not required for this course, but can make things easier
             imageView.setOnMouseClicked(event -> {
-                String id = imageView.getId();
-                id = id.replaceAll("[a-zA-Z]*", "");
-                System.out.println(id);
-                //convert the String into a number
-                int index = Integer.parseInt(id);
-                System.out.println(cardsDealt.get(index));
+                int index = (int) imageView.getUserData();
                 imageView.setImage(cardsDealt.get(index).getImage());
             });
         }
@@ -95,14 +81,20 @@ public class GuesingCardGameController implements Initializable {
         deck.shuffle();
         cardsDealt = new ArrayList<>();
 
-        //deal 4 cards and duplicate each one
-        for(int i = 1; i <= 4; i++){
+        //deal 1/2 the number of imageview Objects and duplicate them
+        for(int i = 1; i <= flowPane.getChildren().size() / 2; i++){
             Card card = deck.dealTopCard();
             cardsDealt.add(card);
             cardsDealt.add(card);
         }
 
         Collections.shuffle(cardsDealt);
+        displayCardsDelt();
+    }
 
+    private void displayCardsDelt(){
+        for(int i = 0; i < cardsDealt.size(); i++){
+            System.out.printf("Index %2d: %s %n", i, cardsDealt.get(i));
+        }
     }
 }
