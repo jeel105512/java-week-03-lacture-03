@@ -127,4 +127,8 @@ public class Card {
     {
         return faceName + " of " + suit;
     }
+
+    public Image getBackOfCardImage(){
+        return new Image(Card.class.getResourceAsStream("image/back_of_card.png"));
+    }
 }
